@@ -18,17 +18,21 @@ const int x=25;
 const int y=25;
 const int radio=5;
 const int N=10;
+void documento(float area[][c], string nombre);
+void c2(float area[][c]);
 
 //Funciones
 void circulo(float area[][c],int radio, int x,int y);
 void casos(float area[][c],float T,int caso);
 void c1(float area[][c]);
+void c2(float area[][c]);
 
 int main()
 {
 	
 	return 0;
 }
+
 
 void circulo(float area[][c],int radio, int x,int y)
 {
@@ -107,6 +111,30 @@ void c1(float area[][c])
 	cont+=1;
 	}
 }
+
+void c2(float area[][c])
+{
+	int cont= 0;
+    
+	casos(area,25,2);
+  	if(cont<=N)
+	{
+	
+	for (int i=1; i< f; i++)
+	{
+		for (int j= 1 ; j<c ; j++)
+			{
+				circulo(area,radio,x,y);
+				area[i][j]=(1-(4*dt*v)/(h*h))*area[i][j]+(dt*v/h*h)*(area[i+1][j]+area[i][j+1]+area[i-1][j]+area[i][j-1]);
+			}
+	}
+	
+	cont+=1;
+	}
+}
+
+
+
 
 
 
