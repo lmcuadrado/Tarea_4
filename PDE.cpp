@@ -22,7 +22,6 @@ const int N=10;
 void circulo(float area[][c],int radio, int x,int y);
 void casos(float area[][c],float T,int caso);
 
-
 int main()
 {
 	
@@ -55,13 +54,37 @@ void casos(float area[][c],float T, int caso)
 				area[0][i]=T;
 				area[c-1][i]=T;
 				area[i][0]=T;
-				area[i][c-1]=T;
-				
+				area[i][c-1]=T;	
 			}
 
 		}
 	
+	if (caso==2)
+		{
 	
+			for (int i = 0 ; i < c; i++)
+			{
+				area[0][i]=T;
+				area[c-1][i]=T;
+				area[i][0]=T;
+				area[i][c-1]=T;	
+			}
+
+
+		}	
+
+	if (caso==3)
+		{
+
+			for (int i = 0 ; i < c-1 ; i++)
+			{
+				area[0][i]=10;
+				area[f-1][i]=10;
+				area[i][0]=10;
+				area[i][c-1]=10;
+			}
+
+		}
 }
 
 
