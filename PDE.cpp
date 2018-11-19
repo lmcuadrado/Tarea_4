@@ -3,6 +3,7 @@
 #include <cmath>
 #include <fstream>
 #include <string>
+using namespace std;
 
 const float k=1.62e4;
 const float cp=820e10;
@@ -21,6 +22,7 @@ const int N=10;
 //Funciones
 void circulo(float area[][c],int radio, int x,int y);
 void casos(float area[][c],float T,int caso);
+void c1(float area[][c]);
 
 int main()
 {
@@ -61,7 +63,6 @@ void casos(float area[][c],float T, int caso)
 	
 	if (caso==2)
 		{
-	
 			for (int i = 0 ; i < c; i++)
 			{
 				area[0][i]=T;
@@ -75,7 +76,6 @@ void casos(float area[][c],float T, int caso)
 
 	if (caso==3)
 		{
-
 			for (int i = 0 ; i < c-1 ; i++)
 			{
 				area[0][i]=10;
@@ -85,6 +85,27 @@ void casos(float area[][c],float T, int caso)
 			}
 
 		}
+}
+
+void c1(float area[][c])
+{
+	int cont=0;
+    
+	if(cont<=N)
+	{
+	
+	for (int i=1 ; i<f ; i++)
+	{
+			for (int j = 1 ; j < c ; j++)
+			{
+				circulo(area,radio,x,y);
+				area[i][j]=(1-(4*dt*v)/(h*h))*area[i][j]+(dt*v/h*h)*(area[i+1][j]+area[i][j+1]+area[i-1][j]+area[i][j-1]);
+			casos(area,10,1);
+			}
+	}
+
+	cont+=1;
+	}
 }
 
 
