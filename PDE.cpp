@@ -18,14 +18,13 @@ const int x=25;
 const int y=25;
 const int radio=5;
 const int N=10;
-void documento(float area[][c], string nombre);
-void c2(float area[][c]);
 
 //Funciones
 void circulo(float area[][c],int radio, int x,int y);
 void casos(float area[][c],float T,int caso);
 void c1(float area[][c]);
 void c2(float area[][c]);
+void c3(float area[][c]);
 void creartxt(float area[][c], string nombre);
 double promedio(float area[][c]);
 
@@ -83,51 +82,103 @@ void c1(float area[][c]) //Fijas
 				area[i][j]=(1-(4*dt*v)/(h*h))*area[i][j]+(dt*v/h*h)*(area[i+1][j]+area[i][j+1]+area[i-1][j]+area[i][j-1]);
 			casos(area,10,1);
 			}
-		}
 		
-		if (cont==1)
-		{
-			creartxt(area,"fija.txt");
+		
+			if (cont==1)
+			{
+				creartxt(area,"fija1.txt");
 			
+			}
+			else if(cont==500)
+			{
+				creartxt(area,"fija2.txt");
+			}
+			else if(cont==1000)
+			{
+				creartxt(area,"fija3.txt");
+			}
+			else if(cont==2000)
+			{
+				creartxt(area,"fija4.txt");
+			}
 		}
-	else if(cont==500)
-		{
-			creartxt(area,"fija.txt");
-
-		}
-	else if(cont==1000)
-		{
-			creartxt(seccion,"fija.txt");
-		}
-	else if(cont==2000)
-		{
-			creartxt(seccion,"fija.txt");
-		}
-	
 	}
 	cont+=1;
-	}
+	
 }
 
-void c2(float area[][c])
+void c2(float area[][c]) //Periodicas
 {
 	int cont= 0;
     
-	casos(area,25,2);
   	if(cont<=N)
 	{
-	
-	for (int i=1; i< f; i++)
-	{
-		for (int j= 1 ; j<c ; j++)
+		for (int i=1; i< f; i++)
+		{
+			for (int j= 1 ; j<c ; j++)
 			{
 				circulo(area,radio,x,y);
 				area[i][j]=(1-(4*dt*v)/(h*h))*area[i][j]+(dt*v/h*h)*(area[i+1][j]+area[i][j+1]+area[i-1][j]+area[i][j-1]);
 			}
+
+			casos(area,25,3);
+
+			if (cont==1)
+			{
+				creartxt(area,"periodica1.txt");
+			}
+			else if(cont==400)
+			{
+				creartxt(area,"periodica2.txt");
+			}
+			else if(cont==1250)
+			{
+				creartxt(area,"periodica3.txt");
+			}
+			else if(cont==1820)
+			{
+				creartxt(area,"periodica4.txt");
+			}
+		}
 	}
-	
 	cont+=1;
-	}
+	
+}
+
+void c3(float area[][c]) //libres
+{
+	int cont = 0;
+	if(cont<=N)
+	{
+		for (int i= 1 ; i< f-2 ; i++)
+		{		
+			for (int j=1 ; j<c-2 ; j++)
+			{
+				circulo(area,radio,x,y);
+				area[i][j]=(1-(4*dt*v)/(h*h))*area[i][j]+(dt*v/h*h)*(area[i+1][j]+area[i][j+1]+area[i-1][j]+area[i][j-1]);	
+			}
+
+			casos(area,N,2);
+			if (cont==1)
+			{
+				creartxt(area,"libres1.txt");
+			}
+			else if(cont==500)
+			{
+				creartxt(area,"libres2.txt");
+			}
+			else if(cont==1000)
+			{
+				creartxt(area,"libres3.txt");
+			}
+			else if(cont==2000)
+			{
+				creartxt(area,"libres4.txt");
+			}
+		}
+ 	}
+	cont+=1;
+	
 }
 
 
