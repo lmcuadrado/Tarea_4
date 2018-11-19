@@ -60,10 +60,10 @@ double promedio(float area[][c])
 {
     double sumita=0.0;
 
-    for (int i= 0; i< filas-2; i++)
+    for (int i= 0; i< f-2; i++)
 	{
         	for (int j= 0; j< c-2; j++)
-            	sumita+= seccion[i][j];
+            	sumita+=area[i][j];
 	}
     return sumita/(49 * 49);
 }
