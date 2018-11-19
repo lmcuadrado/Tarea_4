@@ -17,8 +17,10 @@ const int col=4;
 
 //Funciones
 void creartxt(float area[][col], const char* nombre);
-float f1(float x,float y);
-float f2(float x,float y);
+float f2x(float x,float y);
+float f2y(float x,float y);
+float rk4(float x0,float y0);
+void solx();
 
 int main()
 {
@@ -28,10 +30,10 @@ int main()
 void creartxt(float area[][col], const char* nombre)
 {
 
-   FILE *output;      /* save data in laplace.dat */
+   FILE *output;     
    output = fopen(nombre,"w");
   
-   for (int i=0; i<f-1 ; i++)         /* write data gnuplot 3D format */
+   for (int i=0; i<f-1 ; i++)       
    {  
       if(i!=0)
       {
@@ -42,19 +44,41 @@ void creartxt(float area[][col], const char* nombre)
         {
           fprintf(output, "%f,",area[i][j]);
         }
-          /* empty line for gnuplot */
    }
- //  printf("data stored in laplace.dat\n");
    fclose(output);
 }
 
-float f1(float x,float y)
-{
-	return((-2*x*x*x)+(12*x*x)-(20*x)+8.5);
+float f2x(float x,float y)
+{	
+	return(-1*c*(sqrt(x*x+y*y)/(m))*x);
 }
-float f2(float x,float y)
+float f2y(float x,float y)
 {
-	return((x*x*x));
+	float t1=-g;
+	float t2=c*y;
+	float t3=((sqrt(pow(x,2)+pow(y,2)))/m);
+
+	return(t1-(t2*t3));
+}
+
+float rk4(float x0,float y0)
+{
+	float	k1=func(x0,y0);
+	float	k2=func(x0+0.5*dt,(yo+0.5*k1_c*dt));
+	float	k3=func(x0+0.5*dt,(yo+0.5*k2_c*dt));
+	float	k4=func(x0+dt,(y0+k3_c*dt));
+	
+	return(y0+((dt/6.0)*(k1+2*k2+2*k3+K4)));	
+}
+
+void solx()
+{
+	float respuesta[f][c]={};
+	for (int i=1;i<f-1;i++)
+	{
+		respuesta[i][0]=rk4(a_x,i*dt,1.0);
+	}
+	creartxt(respuesta,"please.txt");
 }
 
 
