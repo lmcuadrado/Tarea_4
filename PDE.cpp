@@ -26,12 +26,48 @@ void circulo(float area[][c],int radio, int x,int y);
 void casos(float area[][c],float T,int caso);
 void c1(float area[][c]);
 void c2(float area[][c]);
+void documento(float area[][c], string nombre);
+double promedio(float area[][c]);
 
 int main()
 {
 	
 	return 0;
 }
+
+void documento(float area[][c], const char* nombre)
+{
+
+   FILE *output;      
+   output = fopen(nombre,"w");
+  
+   for (int i=0; i<f-1 ; i++)       
+   {  
+      if(i!=0)
+      {
+      	fprintf(output, "\n");  
+      }
+      
+        for (int j=0; j<c-1; j++) 
+        {
+          fprintf(output, "%f,", area[i][j]);
+        }
+   }
+   fclose(output);
+}
+
+double promedio(float area[][c])
+{
+    double sumita=0.0;
+
+    for (int i= 0; i< filas-2; i++)
+	{
+        	for (int j= 0; j< c-2; j++)
+            	sumita+= seccion[i][j];
+	}
+    return sumita/(49 * 49);
+}
+
 
 
 void circulo(float area[][c],int radio, int x,int y)
