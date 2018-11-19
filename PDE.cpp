@@ -10,7 +10,7 @@ const float rho=2.71;
 const float h=1.0;
 const float v=2710;
 const float dt=(h*h)/(4*v); //Coeficiente de difusion 
-const float nu=k/cp*p 
+const float nu=k/cp*rho; 
 const int f = 50;
 const int c = 50;
 const int x=25;
@@ -19,7 +19,9 @@ const int radio=5;
 const int N=10;
 
 //Funciones
-void circulo(float seccion[][c],int radio, int x,int y);
+void circulo(float area[][c],int radio, int x,int y);
+void casos(float area[][c],float T,int caso);
+
 
 int main()
 {
@@ -27,7 +29,7 @@ int main()
 	return 0;
 }
 
-void circulo(float seccion[][c],int radio, int x,int y)
+void circulo(float area[][c],int radio, int x,int y)
 {
 
 	for(int i = x - radio; i <= x + radio; i++)
@@ -37,12 +39,30 @@ void circulo(float seccion[][c],int radio, int x,int y)
    		{
        			if( (i-x)*(i-x) + (j-y)*(j-y) <= radio*radio)
       			 {
-        			 seccion[i][j]=100;
+        			 area[i][j]=100;
       			 }
    		}
 	}
 }
 
+
+void casos(float area[][c],float T, int caso)
+{
+	if (caso==1)
+		{
+			for (int i = 0 ; i<c ; i++)
+			{
+				area[0][i]=T;
+				area[c-1][i]=T;
+				area[i][0]=T;
+				area[i][c-1]=T;
+				
+			}
+
+		}
+	
+	
+}
 
 
 
